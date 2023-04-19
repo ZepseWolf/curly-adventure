@@ -1,0 +1,155 @@
+Sub makeloops()
+    Dim dayRange As Range
+    Set dayRange = Range("a2:a2743")
+    
+    For Each objCell In dayRange
+
+    objCell.Value = LCase(objCell.Value)
+
+    Next
+End Sub
+--------------------------------------
+Sub makeloops()
+    Dim monthsArray(12) As String, x As Integer, dayRange As Range, monthRange As Range, cell As Range, cell2 As Range
+    Dim i As Integer
+    i = 0
+    x = 0
+    monthsArray(0) = "1"
+    monthsArray(1) = "2"
+    monthsArray(2) = "3"
+    monthsArray(3) = "4"
+    monthsArray(4) = "5"
+    monthsArray(5) = "6"
+    monthsArray(6) = "7"
+    monthsArray(7) = "8"
+    monthsArray(8) = "9"
+    monthsArray(9) = "10"
+    monthsArray(10) = "11"
+    monthsArray(11) = "12"
+    
+    
+  
+    Set dayRange = Range("c2:c2743")
+     For Each cell2 In dayRange
+      If i = 12 Then
+        i = 0
+      End If
+       x = x + 1
+      Cells(x, 2).Value = monthsArray(i)
+     
+        If x = 1 Then
+        Cells(1, 2).Value = "Month"
+        End If
+        If (cell2.Value <= 5) And Cells(x, 3).Value >= 25 Then
+          i = i + 1
+          
+          Cells(1, 1).Value = "Year"
+        End If
+         Cells(x, 4).Value = CStr(Cells(x, 2).Value) + "/" + CStr(Cells(x, 3).Value) + "/" + CStr(Cells(x, 1).Value)
+    Next
+End Sub
+
+Sub makeloops()
+    Dim quaArray(4) As String, x As Integer, dayRange As Range, monthRange As Range, cell As Range
+    Dim i As Integer
+    i = 0
+    x = 1975
+    quaArray(0) = 1
+    quaArray(1) = 3
+    quaArray(2) = 6
+    quaArray(3) = 9
+    Set dayRange = Range("b2:b171")
+   For Each cell In dayRange
+    If i = 4 Then
+        i = 0
+        x = x + 1
+    End If
+     cell.Value = CStr(quaArray(i)) + "/1/" + CStr(x)
+     i = i + 1
+     
+    Next
+End Sub
+
+Sub makeloops() <-- this is for tables only
+    Dim monthsArray(12) As String, x As Integer, dayRange As Range, dayRange2 As Range, cell As Range
+    Dim i As Integer, c As Integer, s As Integer
+    x = 2
+    i = 5 (change to last row)
+    s = 0
+    c = 2014(change to last date)
+    
+    monthsArray(0) = "1"
+    monthsArray(1) = "2"
+    monthsArray(2) = "3"
+    monthsArray(3) = "4"
+    monthsArray(4) = "5"
+    monthsArray(5) = "6"
+    monthsArray(6) = "7"
+    monthsArray(7) = "8"
+    monthsArray(8) = "9"
+    monthsArray(9) = "10"
+    monthsArray(10) = "11"
+    monthsArray(11) = "12"
+    
+    Set dayRange = Range("n2:n47")
+    Set dayRange2 = Range("o2:o47")
+     For Each cell In dayRange
+     
+     If x = 14 Then
+        x = 2
+        i = i - 1
+     End If
+     cell.Value = Cells(i, x).Value
+     
+     x = x + 1
+     Next
+     For Each cell In dayRange2
+      If s = 12 Then
+        s = 0
+         c = c + 1
+      End If
+       
+     
+     cell.Value = CStr(monthsArray(s)) + "/1/" + CStr(c)
+     s = s + 1
+     Next
+End Sub
+
+Sub makeloops()
+    Dim monthsArray(91) As String, x As Integer, dayRange As Range, monthRange As Range, cell As Range, cell2 As Range
+    Dim i As Double, c As Double, z As Double, f As Double, u As Double
+    f = 4
+    z = 0
+    c = 2007
+    i = 1
+    x = 0
+    u = 0
+    
+    
+    
+  
+    Set dayRange = Range("a2:a2743")
+     For Each cell2 In dayRange
+     i = i + 1
+     If c = cell2.Value Then
+        z = z + Cells(i, f).Value
+        x = x + 1
+     End If
+     
+     If c = 2018 Then
+        i = 0
+        f = f + 1
+        c = 2007
+     End If
+     If c <> cell2.Value Then
+        monthsArray(u) = z / x
+        u = u + 1
+        x = 0
+        z = 0
+        c = c + 1
+     End If
+    Next
+    
+    
+   Cells(2, 14).Value = monthsArray(1)
+End Sub
